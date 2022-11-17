@@ -1,6 +1,7 @@
 package com.example.sensorapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SensorAdapter adapter;
 
+    private static final String SENSOR_APP_TAG = "Sensor_tag";
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorList = sensorManager.getSensorList(Sensor.TYPE_ALL);
+
+        sensorList.forEach(sensor -> {
+            Log.d(SENSOR_APP_TAG, "Sensor name:" + sensor.getName());
+            Log.d(SENSOR_APP_TAG, "Sensor vendor:" + sensor.getVendor());
+            Log.d(SENSOR_APP_TAG, "Sensor max range:" + sensor.getMaximumRange());
+        });
 
         if(adapter == null){
             adapter = new SensorAdapter(sensorList);
