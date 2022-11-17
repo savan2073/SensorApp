@@ -3,4 +3,6 @@
     <string name="icon_description">TODO</string>
     <string name="sensor_name_text">Example application</string>
     <string name="sensor_type_text">Description</string>
+    <string name="menu_button">Show amount of sensors</string>
+    <string name="sensors_count">Liczba czujnikow: %d</string>
 </resources>

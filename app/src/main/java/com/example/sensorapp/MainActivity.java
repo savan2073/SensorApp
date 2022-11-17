@@ -13,6 +13,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -27,6 +30,20 @@ public class MainActivity extends AppCompatActivity {
     private SensorAdapter adapter;
 
     private static final String SENSOR_APP_TAG = "Sensor_tag";
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.fragment_sensor_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String string = getString(R.string.sensors_count, sensorList.size());
+        getSupportActionBar().setSubtitle(string);
+        return true;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
