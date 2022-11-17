@@ -1,5 +1,6 @@
 package com.example.sensorapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 
@@ -46,6 +48,19 @@ public class LocationActivity extends AppCompatActivity {
                     locationTextView.setText(getString(R.string.no_location));
                 }
             });
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case REQUEST_LOCATION_PERMISSION:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    getLocation();
+                }else{
+                    Toast.makeText(this, R.string.location_permission_denied, Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
 }
