@@ -127,8 +127,8 @@ public class SensorActivity extends AppCompatActivity {
                         startActivityForResult(intent, SENSOR_DETAILS_ACTIVITY_REQUEST_CODE);
                     });
                 }
-                if(favourSensors.contains(sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)){
-                itemContainer.setBackgroundColor(getResources().getColor(R.color.teal_700));
+                if(sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD){
+                itemContainer.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 itemContainer.setOnClickListener(view -> {
                     Intent intent = new Intent(SensorActivity.this, LocationActivity.class);
                     startActivityForResult(intent, LOCATION_ACTIVITY_REQUEST_CODE);
