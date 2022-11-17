@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 
 public class LocationActivity extends AppCompatActivity {
 
@@ -33,6 +34,7 @@ public class LocationActivity extends AppCompatActivity {
         getLocationButton = findViewById(R.id.localization_button);
         getLocationButton.setOnClickListener(view -> getLocation());
         locationTextView = findViewById(R.id.localization_textView);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
     private void getLocation(){
@@ -43,7 +45,11 @@ public class LocationActivity extends AppCompatActivity {
             fusedLocationClient.getLastLocation().addOnSuccessListener(location -> {
                 if(location != null){
                     lastLocation = location;
-                    locationTextView.setText(getString(R.string.location_text, location.getLatitude(), location.getLongitude(), location.getTime()));
+                    locationTextView.setText(
+                            getString(R.string.location_text,
+                            location.getLatitude(),
+                            location.getLongitude(),
+                            location.getTime()));
                 }else {
                     locationTextView.setText(getString(R.string.no_location));
                 }
