@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
@@ -20,9 +21,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import static com.example.sensorapp.SensorDetailsActivity.EXTRA_SENSOR_TYPE_PARAMETER;
+
+public class SensorActivity extends AppCompatActivity {
 
     private SensorManager sensorManager;
     private List<Sensor> sensorList;
@@ -30,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private SensorAdapter adapter;
 
     private static final String SENSOR_APP_TAG = "Sensor_tag";
+    private final List<Integer> favourSensors = Arrays.asList(Sensor.TYPE_LIGHT, Sensor.TYPE_AMBIENT_TEMPERATURE);
+    public static final int SENSOR_DETAILS_ACTIVITY_REQUEST_CODE = 1;
+    public static final int LOCATION_ACTIVITY_REQUEST_CODE = 1;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,6 +119,16 @@ public class MainActivity extends AppCompatActivity {
                 sensorNameTextView.setText(sensor.getName());
                 sensorTypeTextView.setText(String.valueOf(sensor.getType()));
                 View itemContainer = itemView.findViewById(R.id.list_item_sensor);
+                if(favourSensors.contains(sensor.getType())){
+                    itemContainer.setBackgroundColor(getResources().getColor(R.color.teal_200));
+                    itemContainer.setOnClickListener(view -> {
+                        Intent intent = new Intent(SensorActivity.this, SensorDetailsActivity.class);
+                        intent.putExtra(EXTRA_SENSOR_TYPE_PARAMETER, sensor.getType());
+                        startActivityForResult(intent, SENSOR_DETAILS_ACTIVITY_REQUEST_CODE);
+                    });
+                }
+
+
             }
         }
     }
