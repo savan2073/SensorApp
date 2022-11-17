@@ -5,4 +5,7 @@
     <string name="sensor_type_text">Description</string>
     <string name="menu_button">Show amount of sensors</string>
     <string name="sensors_count">Liczba czujnikow: %d</string>
+    <string name="example_sensor_name">Example sensor name</string>
+    <string name="example_sensor_value">Example sensor value</string>
+    <string name="missing_sensor">Brak czujnika</string>
 </resources>
