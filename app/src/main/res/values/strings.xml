@@ -12,4 +12,6 @@
     <string name="get_address">Pobierz adres</string>
     <string name="last_localization">Wciśnij przycisk, aby pobrać ostatnią lokalizację</string>
     <string name="last_address">Wciśnij przycisk, aby pobrać ostatni adres</string>
+    <string name="location_text">Szerokość geograficzna @1$.4f \n Długość geograficzna: @2$.4f \n Czas: %3tr</string>
+    <string name="no_location">Brak lokalizacji</string>
 </resources>
