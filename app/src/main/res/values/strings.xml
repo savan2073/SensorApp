@@ -8,4 +8,8 @@
     <string name="example_sensor_name">Example sensor name</string>
     <string name="example_sensor_value">Example sensor value</string>
     <string name="missing_sensor">Brak czujnika</string>
+    <string name="get_location">Pobierz lokalizację</string>
+    <string name="get_address">Pobierz adres</string>
+    <string name="last_localization">Wciśnij przycisk, aby pobrać ostatnią lokalizację</string>
+    <string name="last_address">Wciśnij przycisk, aby pobrać ostatni adres</string>
 </resources>
