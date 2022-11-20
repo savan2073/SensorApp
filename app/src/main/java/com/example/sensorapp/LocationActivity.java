@@ -112,11 +112,7 @@ public class LocationActivity extends AppCompatActivity {
             fusedLocationClient.getLastLocation().addOnSuccessListener(location -> {
                 if(location != null){
                     lastLocation = location;
-                    locationTextView.setText(
-                            getString(R.string.location_text,
-                            location.getLatitude(),
-                            location.getLongitude(),
-                            location.getTime()));
+                    locationTextView.setText(getString(R.string.location_text, location.getLatitude(), location.getLongitude(), location.getTime()));
                 }else {
                     locationTextView.setText(getString(R.string.no_location));
                 }
@@ -126,11 +122,11 @@ public class LocationActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_LOCATION_PERMISSION:
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getLocation();
-                }else{
+                } else {
                     Toast.makeText(this, R.string.location_permission_denied, Toast.LENGTH_SHORT).show();
                 }
                 break;

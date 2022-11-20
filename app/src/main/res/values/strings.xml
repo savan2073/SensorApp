@@ -13,7 +13,7 @@
     <string name="last_localization">Wciśnij przycisk, aby pobrać ostatnią lokalizację</string>
     <string name="location_permission_denied">Odmówiono zezwolenia dostępu do lokalizacji</string>
     <string name="last_address">Wciśnij przycisk, aby pobrać ostatni adres</string>
-    <string name="location_text">Szerokość geograficzna @1$.4f \n Długość geograficzna: @2$.4f \n Czas: %3tr</string>
+    <string name="location_text">Szerokość geograficzna %1$.4f \n Długość geograficzna: %2$.4f \n Czas: %3$tr</string>
     <string name="no_location">Brak lokalizacji</string>
     <string name="address_text">Adres: %1$s \n Czas: %2$tr</string>
     <string name="service_not_available">Service not available</string>
